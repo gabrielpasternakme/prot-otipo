@@ -251,8 +251,8 @@ a img {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 10000px;
+    height: 10000px;
     pointer-events: none;
     mix-blend-mode: multiply;
     background: radial-gradient(circle 100px at 50% 50%, rgba(255,255,255,0) 0%, rgba(0,0,0,0.7) 10000px);
