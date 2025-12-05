@@ -1,0 +1,317 @@
+#user-menu {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 5000;
+    
+}
+
+#menu-toggle {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    cursor: pointer;
+    box-shadow: 0 0 10px #0008;
+    font-size: 20px;
+    position: relative;
+    z-index: 5001;
+}
+
+/* menu fechado (invisível + deslocado pra direita) */
+#menu-panel {
+    position: absolute;
+    top: 55px;
+    right: 0;
+    width: 180px;
+    padding: 15px;
+
+    background: #1a1a1add;
+    border: 1px solid #ffffff22;
+    border-radius: 12px;
+    backdrop-filter: blur(4px);
+    color: #fff;
+
+    opacity: 0;
+    transform: translateX(20px);
+    pointer-events: none;
+
+    transition: 0.3s ease;
+}
+
+/* menu aberto animado pra esquerda */
+#menu-panel.open {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+#menu-panel button {
+    width: 100%;
+    padding: 8px;
+    background: #333;
+    border: none;
+    border-radius: 8px;
+    margin-top: 8px;
+    color: #fff;
+    cursor: pointer;
+}
+
+
+
+
+
+/* ===== RESET / BASE ===== */
+body {
+    margin: 0;
+    background: #240a30;
+    font-family: "Work Sans", sans-serif;
+    overflow: auto;
+    cursor: crosshair;
+}
+
+/* elementos absolutos */
+.sprite,
+.bloco {
+    position: absolute;
+}
+
+/* ===== BLOCOS ===== */
+.bloco {
+    font-size: 28px;
+    color: #fff;
+    transform: translate(-50%, -50%);
+    outline: none;
+    cursor: grab;
+    user-select: none;
+    white-space: pre-wrap;
+    text-shadow: 0 0 8px #000;
+    animation: flutuar 3s ease-in-out infinite, rotate 3s ease-in-out infinite;
+}
+
+/* flutuação */
+@keyframes flutuar {
+    0%   { transform: translateY(0); }
+    50%  { transform: translateY(-12px); }
+    100% { transform: translateY(0); }
+}
+
+/* rotação */
+@keyframes rotate {
+    0%   { transform: rotate(0deg); }
+    50%  { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+}
+
+/* ===== ZONAS ===== */
+.zone,
+.zone2 {
+    background: repeating-linear-gradient(
+        5deg,
+        #8b8b8b 0,
+        #8b8b8b 4px,
+        #240a30 4px,
+        #240a30 16px
+    );
+    mix-blend-mode: saturation;
+    opacity: 1;
+    position: fixed;
+    z-index: -1;
+}
+
+.zone {
+    width: 9vw;
+    height: 9vw;
+    left: 1435px;
+    top: 0;
+}
+
+.zone2 {
+    width: 9vw;
+    height: 9vw;
+    left: 0px;
+    bottom: 0px;
+}
+
+/* ===== SPRITES ===== */
+    .sprite {
+        position:absolute;
+        z-index:-2;
+        animation: spin 20s linear infinite;
+        opacity:0.3;
+    }
+
+    @keyframes spin {
+        0%{ transform:rotate(0deg); }
+        100%{ transform:rotate(360deg); }
+    }
+    a {
+    position: width:200px; top:60%; left:10%;
+    display: block;
+}
+a img {
+    pointer-events: auto;
+}
+#mundo {
+    position: absolute;
+    top:0;
+    left:0;
+    width: 10000px;
+    height: 10000px;
+    background: transparent;
+    z-index: 0; 
+    
+
+}
+
+/* ===== DECOR ===== */
+#decor-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 10000px;
+    height: 10000px;
+    opacity: 0.3;
+    color: #fff;
+    pointer-events: none;
+    z-index: -5;
+}
+
+.decor {
+    position: absolute;
+    opacity: 0.25;
+    animation: girar 40s linear infinite;
+}
+
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to   { transform: rotate(360deg); }
+}
+
+/* ===== PARTÍCULAS ===== */
+.particle {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.9);
+    pointer-events: none;
+    filter: blur(1px);
+    animation: floatFree 6s ease-in-out infinite;
+}
+
+@keyframes floatFree {
+    0%   { transform: translate(0,0) scale(1); opacity: 1; }
+    50%  { transform: translate(-20px,-40px) scale(.7); opacity: .8; }
+    100% { transform: translate(20px,-10px) scale(1); opacity: 1; }
+}
+
+/* ===== COLOR PICKER ===== */
+.color-picker-wrapper {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    z-index: 99;
+}
+
+.color-picker-wrapper input[type="color"] {
+    appearance: none;
+    -webkit-appearance: none;
+    width: 45px;
+    height: 45px;
+    border: none;
+    background: none;
+    cursor: pointer;
+}
+
+.color-picker-wrapper input[type="color"]::-webkit-color-swatch {
+    border-radius: 100%;
+    border: none;
+}
+
+.color-preview {
+    width: 0;
+    height: 0;
+    border-radius: 100%;
+    background: #fff;
+    border: 0 solid #fff;
+    box-shadow: 0 0 8px #0006;
+    transition: transform .15s, box-shadow .15s;
+}
+
+.color-picker-wrapper:hover .color-preview {
+    transform: scale(1.08);
+    box-shadow: 0 0 10px #0006;
+}
+
+/* ===== LANTERNA ===== */
+#light-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    mix-blend-mode: multiply;
+    background: radial-gradient(circle 100px at 50% 50%, rgba(255,255,255,0) 0%, rgba(0,0,0,0.7) 150px);
+    transition: background-position 0.05s;
+    z-index: 999;
+}
+
+/* ===== CHAOS BUTTON ===== */
+#chaos-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 50px;
+    height: 50px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    background: #ff4444;
+    color: #fff;
+    font-size: 24px;
+    z-index: 999;
+    box-shadow: 0 0 10px #ff0000aa;
+    transition: transform .15s, box-shadow .15s;
+}
+
+#chaos-btn:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #ff0000cc;
+}
+
+/* ===== CHAOS BACKGROUND ===== */
+#chaos-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    pointer-events: none;
+    opacity: 0;
+    background: linear-gradient(
+        90deg,
+        rgba(255,0,0,0.1),
+        rgba(0,0,255,0.1),
+        rgba(0,255,0,0.1),
+        rgba(255,255,0,0.1),
+        rgba(128,0,128,0.1)
+    );
+    background-size: 500% 500%;
+    transition: opacity 0.3s;
+    z-index: 998;
+}
+
+@keyframes raveAnim {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.rave-active #chaos-bg {
+    opacity: 0.35;
+    animation: raveAnim 4s linear infinite;
+}

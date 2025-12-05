@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>config</title>
+<meta charset="UTF-8">
+<style>
+body{background:#222;color:white;font-family:Arial;padding:20px;}
+input[type=color]{width:60px;height:40px;border:none;}
+button{padding:10px;margin:10px 0;border:none;border-radius:8px;background:#444;color:white;cursor:pointer;}
+</style>
+</head>
+<body>
+
+<h2>configurações</h2>
+
+<div id="cfg"></div>
+
+<button onclick="salvar()">salvar</button>
+<button onclick="voltar()">voltar</button>
+
+<script>
+let user, nome;
+
+function load(){
+    nome = localStorage.getItem("logado");
+    if(!nome) location.href="login.html";
+
+    let users = JSON.parse(localStorage.getItem("usuarios"));
+    user = users[nome];
+
+    cfg.innerHTML = `
+        <p>avatar:</p>
+        <input id="avat" value="${user.avatar}">
+
+        <p>cor padrão:</p>
+        <input id="cor" type="color" value="${user.preferencias.cor}">
+
+        <p>sons:</p>
+        <input type="checkbox" id="som" ${user.preferencias.som ? "checked":""}>
+
+        <p>modo caos:</p>
+        <input type="checkbox" id="caos" ${user.preferencias.caos ? "checked":""}>
+    `;
+}
+load();
+
+function salvar(){
+    let users = JSON.parse(localStorage.getItem("usuarios"));
+
+    user.avatar = avat.value;
+    user.preferencias.cor = cor.value;
+    user.preferencias.som = som.checked;
+    user.preferencias.caos = caos.checked;
+
+    users[nome] = user;
+    localStorage.setItem("usuarios", JSON.stringify(users));
+
+    alert("configurações salvas");
+}
+function voltar(){ window.location="index.html"; }
+</script>
+
+</body>
+</html>

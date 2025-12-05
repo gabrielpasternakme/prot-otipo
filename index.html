@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>universo de pensamentos</title>
+
+<!-- fontes -->
+<link href="https://fonts.googleapis.com/css?family=Work+Sans:300,500" rel="stylesheet">
+
+<!-- css principal -->
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+    
+
+
+
+<div id="chaos-bg"></div>
+
+<div id="mundo">
+    <audio id="ambient-sound" loop autoplay>
+    <source src="ambient.mp3" type="audio/mpeg">
+    </audio>
+
+     <img src="sprite1.png" class="sprite" style="width:200px; top:100%; left:100%;">
+    
+    <a href="https://mapa-steel.vercel.app" target="_blank">
+        <img src="sprite2.png" class="sprite" style="width:200px; top:95%; left:95%;">
+    </a>
+
+    <a href="https://assinaturas-five.vercel.app/assinaturas.html" target="_blank">
+        <img src="sprite3.png" class="sprite" style="width:180px; top:90%; left:90%;">
+    </a>
+
+    <button id="chaos-btn">🔥</button>
+
+    <div id="light-overlay"></div>
+    <div id="decor-container"></div>
+
+    <div class="zone"></div>
+    <div class="zone2"></div>
+
+
+   
+
+</div>
+
+<div class="color-picker-wrapper">
+    <input class="color-picker" type="color" value="#ffffff">
+    <div class="color-preview"></div>
+</div>
+
+<div class="color-picker-wrapper">
+    <input class="color-picker" type="color" value="#ffffff">
+    <div class="color-preview"></div>
+</div>
+<div id="user-menu">
+    <button id="menu-toggle">☰</button>
+
+    <div id="menu-panel">
+        <h3>todos os users</h3>
+        <button onclick="login()">login</button>
+        </button>
+        
+        <button onclick="register()">criar conta</button>
+        </button>
+        <button onclick="config()">configurações</button>
+        </button>
+    </div>
+</div>
+
+
+
+
+<script src="script.js"></script>
+
+
+
+
+</body>
+</html>
